@@ -1,25 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olga Vorontsova | Portfolio</title>
+    <title>Olga Vorontsova | Game Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
-        h1 { color: #333; }
-        p { color: #666; font-size: 18px; }
+        /* Основні налаштування сторінки (Темна тема) */
+        body {
+            background-color: #121212; /* Темний фон */
+            color: #e0e0e0; /* Світлий текст */
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Контейнер, щоб контент був по центру і не розтягувався */
+        .container {
+            width: 90%;
+            max-width: 700px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        /* Стиль для вашого імені */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        /* Стиль підзаголовка */
+        .subtitle {
+            color: #bb86fc; /* Фіолетовий акцент */
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        /* Заголовок секції робіт */
+        h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        /* Прибираємо крапки біля списку */
+        ul {
+            list-style-type: none; 
+            padding: 0;
+        }
+
+        /* Стиль для карток-посилань */
+        .work-card {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 12px; /* Закруглені кути */
+            padding: 20px;
+            margin-bottom: 15px;
+            display: block; /* Робить всю картку клікабельною */
+            text-decoration: none; /* Прибирає підкреслення */
+            color: white;
+            transition: transform 0.2s, background-color 0.2s;
+            text-align: left;
+        }
+
+        /* Ефект при наведенні мишки */
+        .work-card:hover {
+            background-color: #2c2c2c;
+            transform: translateY(-3px); /* Трохи піднімається */
+            border-color: #bb86fc;
+        }
+
+        .work-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #bb86fc;
+        }
+        
+        .work-desc {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-top: 5px;
+        }
+
+        /* Футер (низ сайту) */
+        footer {
+            margin-top: 50px;
+            color: #666;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
 
-    <h1>Hello! I am Olga Vorontsova</h1>
-    <p>Game Content Writer & HTML Specialist</p>
-  <h3>My Latest Works:</h3>
-    <ul>
-        <li>
-            <a href="wow-pvp-tier-list.html">Wow PvP Meta Tier List – Season 2</a>
-        </li>
-    </ul>
+    <div class="container">
+        <h1>Olga Vorontsova</h1>
+        <p class="subtitle">Game Content Writer & HTML Specialist</p>
+
+        <h2>My Latest Works</h2>
+        
+        <ul>
+            <li>
+                <a href="wow-pvp-tier-list.html" class="work-card">
+                    <div class="work-title">Wow PvP Meta Tier List – Season 2</div>
+                    <div class="work-desc">Detailed guide about PvP mechanics and class rating.</div>
+                </a>
+            </li>
+
+            </ul>
+
+        <footer>
+            © 2024 Olga Vorontsova. Portfolio built on GitHub Pages.
+        </footer>
+    </div>
 
 </body>
 </html>
