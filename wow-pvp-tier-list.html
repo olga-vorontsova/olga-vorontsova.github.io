@@ -1,363 +1,228 @@
-<body>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoW PvP Meta Tier List – Season 2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* =========================================
+           1. ОСНОВНИЙ СТИЛЬ ПОРТФОЛІО (Темна тема)
+           ========================================= */
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Контейнер для статті */
+        .article-container {
+            max-width: 900px; /* Трохи ширше для таблиць */
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #1e1e1e;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* Кнопка "Назад" */
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid #333;
+            padding: 5px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .back-btn:hover { color: #fff; border-color: #fff; }
+
+        /* Заголовки */
+        h1 { color: #ffffff; font-size: 2.2em; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 30px; }
+        h2 { color: #ffffff; margin-top: 50px; border-left: 5px solid #D72638; padding-left: 15px; }
+        h3 { color: #bb86fc; margin-top: 30px; margin-bottom: 15px; }
+        h4 { color: #e0e0e0; margin-top: 25px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Текст та списки */
+        p { margin-bottom: 15px; font-size: 18px; color: #ccc; }
+        ul { margin-bottom: 20px; padding-left: 20px; }
+        li { margin-bottom: 10px; color: #ccc; }
+        strong, b { color: #fff; }
+        a { color: #D72638; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* =========================================
+           2. СТИЛІ TIER LIST (Збережено ваші кольори)
+           ========================================= */
+        
+        /* Таблиця */
         .tier-list {
             width: 100%;
-            max-width: 100%;
-            margin: 0 auto;
-            border-collapse: collapse;
+            margin: 20px 0;
+            border-collapse: separate; 
+            border-spacing: 0;
+            border: 1px solid #333;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #252525; /* Темний фон для таблиці */
         }
 
-        .tier-list th,
         .tier-list td {
             padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #333;
+            vertical-align: middle;
         }
+        
+        /* Прибираємо лінію в останнього рядка */
+        .tier-list tr:last-child td { border-bottom: none; }
 
-        .tier-list th {
-            background-color: #4CAF50;
-            color: white;
+        /* Кольорові блоки з літерами (S, A, B...) */
+        .s-tier, .a-tier, .b-tier, .c-tier, .d-tier, .f-tier {
             font-weight: bold;
-            text-transform: uppercase;
+            font-size: 1.5em;
+            color: #111 !important; /* Чорний текст на кольоровому фоні */
+            width: 60px;
         }
+        .s-tier { background-color: #f66; }
+        .a-tier { background-color: #f96; }
+        .b-tier { background-color: #fc6; }
+        .c-tier { background-color: #cf6; }
+        .d-tier { background-color: #6c6; }
+        .f-tier { background-color: #6fc; }
 
+        /* Кольорові бейджики в тексті */
+        .s-tier-text, .a-tier-text, .b-tier-text, .c-tier-text, .d-tier-text {
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #111;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin: 0 4px;
+        }
+        .s-tier-text { background-color: #f66; }
+        .a-tier-text { background-color: #f96; }
+        .b-tier-text { background-color: #fc6; }
+        .c-tier-text { background-color: #cf6; }
+        .d-tier-text { background-color: #6c6; }
+
+        /* Сітка ікон */
         .tier-icons {
             display: flex;
-
             flex-wrap: wrap;
-
             gap: 10px;
-
-            justify-content: flex-start;
-
+            padding: 10px;
         }
 
         .tier-icons div {
             display: flex;
             flex-direction: column;
-
             align-items: center;
-
-            justify-content: flex-start;
-            width: 22%;
-
-            max-width: 120px;
-
-            aspect-ratio: 3 / 4;
-
-            border: 2px solid black;
-            border-radius: 8px;
-            padding: 5px;
-
-            box-sizing: border-box;
-
+            width: 80px; /* Фіксована ширина картки */
+            text-align: center;
         }
 
         .tier-icon {
-            width: 75px;
-
-            height: 75px;
+            width: 60px;
+            height: 60px;
             object-fit: cover;
-
+            border-radius: 6px;
+            border: 2px solid #333;
             margin-bottom: 5px;
-
-            border-radius: 5px;
+            transition: transform 0.2s;
         }
-
+        
+        .tier-icon:hover { transform: scale(1.1); border-color: #fff; }
 
         .tier-caption {
-            font-size: 0.85em;
-
-            text-align: center;
-
-            color: #f66;
-            white-space: normal;
-
-            word-wrap: break-word;
-
-            overflow-wrap: break-word;
+            font-size: 0.75em;
             line-height: 1.2;
+            color: #ccc !important; /* Колір підпису */
         }
 
-        .s-tier {
-            background-color: #f66;
-            color: #333;
-            font-weight: bold;
-            padding: 10px 15px;
-            border-radius: 0;
-        }
-
-        .a-tier {
-            background-color: #f96;
-            color: #333;
-            font-weight: bold;
-            padding: 10px 15px;
-            border-radius: 0;
-        }
-
-        .b-tier {
-            background-color: #fc6;
-            color: #333;
-            font-weight: bold;
-            padding: 10px 15px;
-            border-radius: 0;
-        }
-
-        .c-tier {
-            background-color: #cf6;
-            color: #333;
-            font-weight: bold;
-            padding: 10px 15px;
-            border-radius: 0;
-        }
-
-        .d-tier {
-            background-color: #6c6;
-            color: #333;
-            font-weight: bold;
-            padding: 10px 15px;
-            border-radius: 0;
-        }
-
-        .f-tier {
-            background-color: #6fc;
-            color: #333;
-            font-weight: bold;
-            padding: 10px 15px;
-            border-radius: 0;
-        }
-
-
-
-
-
-        .tier-icons div {
-            width: 100px;
-            height: 130px;
-        }
-
-
-
+        /* Адаптивність для мобільних */
         @media (max-width: 600px) {
-            .tier-icons div {
-                width: 60px;
-
-                height: 100px;
-
-            }
-
-            .tier-icon {
-                width: 50px;
-
-                height: 50px;
-
-            }
-
-            .tier-caption {
-                font-size: 0.85em;
-
-            }
+            .tier-icons div { width: 60px; }
+            .tier-icon { width: 45px; height: 45px; }
+            .tier-caption { font-size: 0.65em; display: none; /* Можна приховати текст на дуже малих екранах */ }
+            .s-tier, .a-tier, .b-tier { font-size: 1.2em; width: 40px; }
         }
 
-        @media (min-width: 601px) and (max-width: 1024px) {
-            .tier-icons div {
-                width: 80px;
-
-                height: 120px;
-
-            }
-
-            .tier-icon {
-                width: 60px;
-                height: 60px;
-            }
-
-            .tier-caption {
-                font-size: 0.9em;
-
-            }
+        /* =========================================
+           3. СТИЛІ FAQ (ACCORDION)
+           ========================================= */
+        .blog-accordion {
+            margin-top: 20px;
         }
-
-        .s-tier-text {
-            grid-area: s-h;
-            background-color: #f66;
-            color: #333;
-            padding-inline: 3px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
+        .blog-accordion > div {
+            border-bottom: 1px solid #333;
+            padding: 10px 0;
         }
-
-        .a-tier-text {
-            grid-area: a-h;
-            background-color: #f96;
-            color: #333;
-            padding-inline: 3px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
+        /* Ховаємо стандартний чекбокс */
+        .blog-accordion__input { 
+            display: none; 
         }
-
-        .b-tier-text {
-            grid-area: b-h;
-            background-color: #fc6;
-            color: #333;
-            padding-inline: 3px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .c-tier-text {
-            grid-area: c-h;
-            background-color: #cf6;
-            color: #333;
-            padding-inline: 3px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .d-tier-text {
-            grid-area: d-h;
-            background-color: #6c6;
-            color: #333;
-            padding-inline: 3px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .f-tier-text {
-            grid-area: f-h;
-            background-color: #6fc;
-            color: #333;
-            padding-inline: 3px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .s-tier-text-body {
-            grid-area: s-body;
-        }
-
-        .a-tier-text-body {
-            grid-area: a-body;
-        }
-
-        .b-tier-text-body {
-            grid-area: b-body;
-        }
-
-        .c-tier-text-body {
-            grid-area: c-body;
-        }
-
-        .d-tier-text-body {
-            grid-area: d-body;
-        }
-
-        .f-tier-text-body {
-            grid-area: f-body;
-        }
-
-        .side-menu {
-            position: fixed;
-            top: 180px;
-            right: 50px;
-            width: 300px;
-            height: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            overflow-y: auto;
-        }
-
-
-        .side-menu .menu-item {
+        /* Заголовок питання */
+        .blog-accordion__label {
             display: block;
-            margin: 5px 0;
+            cursor: pointer;
+            font-weight: bold;
+            color: #fff;
             padding: 10px;
-            text-decoration: none;
-            background-color: rgba(0, 0, 0, 0.3);
-            color: #d2d7e0 !important;
-            font-size: 0.9em;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+            background-color: #252525;
+            border-radius: 5px;
+            position: relative;
         }
-
-
-
-
-        .side-menu .sub-item {
-            margin-left: 20px;
+        .blog-accordion__label:hover {
+            background-color: #333;
         }
-
-
-        .side-menu .menu-item:hover {
-            color: #e9464b !important;
-            background-color: rgba(0, 0, 0, 0.5);
-            text-decoration: none !important;
-            transform: scale(1.015);
-            transition: all 0.3s ease;
+        .blog-accordion__label::after {
+            content: '+';
+            position: absolute;
+            right: 15px;
+            font-size: 1.2em;
         }
-
-
-        @media (max-width: 2400px) {
-            .side-menu {
-                right: 30px;
-            }
+        /* Коли відкрито */
+        .blog-accordion__input:checked + .blog-accordion__label::after {
+            content: '-';
         }
-
-        @media (max-width: 1600px) {
-            .side-menu {
-                display: none;
-            }
+        /* Контент відповіді */
+        .blog-accordion__content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: #ccc;
+            padding-left: 15px;
+            padding-right: 15px;
         }
+        .blog-accordion__input:checked ~ .blog-accordion__content {
+            max-height: 500px; /* Достатньо велике число */
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        
+        /* Роздільник */
+        hr { border: 0; border-top: 1px solid #333; margin: 30px 0; }
+
     </style>
+</head>
+<body>
 
+    <div class="article-container">
+        <a href="index.html" class="back-btn">← Back to Portfolio</a>
 
-    <section class="blog-layout">
-        <article class="blog-wrapper flow diablo-m-guide">
-            <h1 id="blog-h1"><span style="color: #D72638;">Wow PvP Meta Tier List – Season 2</span></h1>
-            <!-- blog-global--styles -->
-            {{ chunk("e8ec8fb116ad41cd84db8c23778e4c0e")|raw }}
-            <!-- blog-global--styles end-->
-            <!-- adds-chunk-styles -->
-            {{ chunk("65a60752675748168506488a8637cb8a")|raw }}
-            <!-- adds-chunk-styles -->
-           <!-- <div id="sideMenu" class="side-menu">
-                <div>
-                    <p style="text-align: center;">Table of Content</p>
-                </div>
-                <a href="#blog-b1" class="menu-item main-item">Understanding Tier List</a>
-                <a href="#blog-b2" class="menu-item main-item">WoW PvP Tier List</a>
-                <a href="#blog-b3" class="menu-item main-item">Why is the Tier List important?</a>
-                <a href="#blog-b4" class="menu-item main-item">Tips & Tricks</a>
-                <a href="#blog-b5" class="menu-item main-item">Final Thoughts</a>
-                <a href="#blog-b6" class="menu-item main-item">FAQ</a>
+        <h1><span style="color: #D72638;">WoW PvP Meta Tier List – Season 2</span></h1>
 
-            </div>-->
-            
+        <p>
+            Welcome to our comprehensive guide to the <b>WoW PvP Tier List</b>, designed to help you navigate the current PvP meta in World of Warcraft! 
+            This tier list highlights the best classes in PvP, from the unbeatable <span class="s-tier-text">S-tier</span> champions to the more situational <span class="d-tier-text">D-tier</span> options.
+        </p>
 
-
-            <p> Welcome to our comprehensive guide to the <b>WoW PvP Tier List</b>, designed to help you navigate the current PvP meta in World of Warcraft! This tier list is built on player feedback and performance data, offering an invaluable resource to help you navigate the competitive landscape of PvP. Whether you’re tackling 2v2 arenas, 3v3 battles, or large-scale Rated Battlegrounds, this guide will give you the knowledge to maximize your potential and climb the ranks.
-
-                This tier list highlights the best classes in PvP, from the unbeatable <span class="s-tier-text">  S-tier</span>  champions to the more situational <span class="d-tier-text"> D-tier</span>  options. Whether you’re new to PvP or a seasoned competitor, this guide will help you choose the best classes for your team and improve your chances of victory.
-            </p>
-
-            <!-- prod 1 banner -->
-            {{ chunk("018f365328197bfb920401f23651f341")|raw }} 
-            <!-- prod 1 end-->
-
-            <a id="blog-b1" class="navsection"></a>
             <h2>
                 <span style="color: #D72638;">Understanding WoW PvP Tier List</span>
             </h2>
@@ -1760,3 +1625,4 @@
 
         </article>
     </section>
+</html>
