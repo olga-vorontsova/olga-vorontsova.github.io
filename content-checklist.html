@@ -3,259 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Чек-лист: Фото контент для E-commerce</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>E-commerce Content Guide: Правила фото</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* === НОВИЙ СТИЛЬ: "CLEAN & CORPORATE" (Світла тема) === */
+        /* === СТИЛЬ: PROFESSIONAL & CLEAN (Оновлений) === */
         
         :root {
-            --primary-color: #2563eb; /* Строгий синій */
-            --bg-color: #f8f9fa; /* Дуже світлий сірий фон */
-            --card-bg: #ffffff; /* Білий фон для карток */
-            --text-main: #1f2937; /* Темно-сірий текст (не чорний) */
-            --text-light: #6b7280;
-            --border-color: #e5e7eb;
-            --success-color: #10b981;
+            --primary: #0f172a; /* Глибокий темний */
+            --accent: #2563eb; /* Акцентний синій */
+            --success: #16a34a; /* Зелений для "Правильно" */
+            --error: #dc2626;   /* Червоний для "Неправильно" */
+            --bg: #f3f4f6;
+            --card: #ffffff;
+            --border: #e5e7eb;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg);
+            color: #333;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        /* Верхня панель (схожа на адмінку) */
+        /* Хедер */
         header {
-            background-color: var(--card-bg);
-            border-bottom: 1px solid var(--border-color);
-            padding: 15px 0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+            margin-bottom: 40px;
         }
-
-        .header-content {
-            max-width: 800px;
+        .header-inner {
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
-        .back-link {
+        .back-btn {
             text-decoration: none;
-            color: var(--text-light);
+            color: #666;
+            font-weight: 600;
             font-size: 0.9em;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 5px;
             transition: 0.2s;
         }
-        .back-link:hover { color: var(--primary-color); }
+        .back-btn:hover { color: var(--accent); }
 
-        .status-badge {
-            background-color: #dbeafe;
-            color: var(--primary-color);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75em;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        /* Основний контейнер (схожий на документ А4) */
-        .document-container {
-            max-width: 800px;
-            margin: 40px auto;
-            background-color: var(--card-bg);
+        /* Контейнер статті */
+        .doc-container {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            background: var(--card);
             padding: 60px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
         }
 
-        h1 { font-size: 2.2em; color: #111; margin-bottom: 10px; letter-spacing: -0.5px; }
-        h2 { font-size: 1.4em; color: #374151; margin-top: 40px; margin-bottom: 20px; border-bottom: 2px solid var(--bg-color); padding-bottom: 10px; }
+        h1 { font-size: 2.4em; color: var(--primary); margin-bottom: 15px; letter-spacing: -0.02em; }
+        .subtitle { font-size: 1.2em; color: #6b7280; margin-bottom: 50px; font-weight: 300; }
         
-        .intro-text { font-size: 1.1em; color: var(--text-light); margin-bottom: 40px; }
-
-        /* Стилі чек-листа */
-        .checklist-group { margin-bottom: 30px; }
-        
-        .check-item {
+        h2 { 
+            font-size: 1.6em; 
+            color: var(--primary); 
+            margin-top: 60px; 
+            margin-bottom: 25px; 
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--bg);
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            padding: 15px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            transition: all 0.2s ease;
+            align-items: center;
+            gap: 10px;
         }
         
-        .check-item:hover {
-            border-color: var(--primary-color);
-            background-color: #f0f7ff;
-            transform: translateX(5px);
-        }
-
-        /* Імітація галочки */
-        .checkbox-fake {
-            min-width: 20px;
-            height: 20px;
-            border: 2px solid var(--primary-color);
-            border-radius: 4px;
-            margin-right: 15px;
-            margin-top: 3px;
-            position: relative;
-        }
-        
-        .checkbox-fake::after {
-            content: '✓';
-            position: absolute;
-            top: -4px;
-            left: 2px;
-            color: var(--primary-color);
+        .step-number {
+            background: var(--accent);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6em;
             font-weight: bold;
-            font-size: 16px;
         }
 
-        .item-content strong { display: block; color: #111; margin-bottom: 3px; }
-        .item-content span { font-size: 0.9em; color: var(--text-light); }
+        p { margin-bottom: 20px; color: #4b5563; }
 
-        /* Блок "Важливо" */
-        .alert-box {
-            background-color: #fffbeb;
-            border-left: 4px solid #f59e0b;
-            padding: 15px 20px;
+        /* === БЛОКИ ПОРІВНЯННЯ (NEW!) === */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
             margin: 30px 0;
-            color: #92400e;
-            border-radius: 4px;
-            font-size: 0.95em;
         }
 
-        /* Таблиця вимог */
-        .specs-table {
+        .compare-card {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .compare-img {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            font-size: 0.9em;
+            height: 250px;
+            object-fit: cover;
+            display: block;
         }
-        .specs-table th { text-align: left; background: var(--bg-color); padding: 10px; color: var(--text-light); }
-        .specs-table td { padding: 10px; border-bottom: 1px solid var(--border-color); }
-        .specs-table tr:last-child td { border-bottom: none; }
 
-        /* Мобільна адаптація */
-        @media (max-width: 600px) {
-            .document-container { padding: 20px; margin: 10px; }
-            h1 { font-size: 1.8em; }
+        .compare-label {
+            padding: 12px;
+            font-weight: 700;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        /* Стилі для "Погано" */
+        .is-bad { border-color: var(--error); }
+        .is-bad .compare-label { background: #fef2f2; color: var(--error); border-top: 1px solid var(--error); }
+        
+        /* Стилі для "Добре" */
+        .is-good { border-color: var(--success); }
+        .is-good .compare-label { background: #f0fdf4; color: var(--success); border-top: 1px solid var(--success); }
+
+        /* Текстові пояснення */
+        .insight-box {
+            background: #f8fafc;
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95em;
+            margin: 20px 0;
+        }
+
+        /* Чек-ліст в кінці */
+        .final-checklist {
+            background: var(--primary);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-top: 60px;
+        }
+        .final-checklist h3 { margin-top: 0; color: white; }
+        .final-checklist ul { list-style: none; padding: 0; }
+        .final-checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .final-checklist li::before { content: '✔'; color: var(--success); font-weight: bold; }
+
+        /* Адаптивність */
+        @media (max-width: 700px) {
+            .doc-container { padding: 30px 20px; }
+            .comparison-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="header-content">
-            <a href="index.html" class="back-link">
-                <span>←</span> Повернутися до портфоліо
-            </a>
-            <span class="status-badge">E-commerce Guide</span>
+        <div class="header-inner">
+            <a href="index.html" class="back-btn">← Повернутися до портфоліо</a>
+            <span style="font-size: 0.85em; color: #999; font-weight: 600;">E-COMMERCE GUIDE</span>
         </div>
     </header>
 
-    <div class="document-container">
-        <h1>Як підготувати фото контент для інтернет-магазину</h1>
+    <div class="doc-container">
+        <h1>Як підготувати ідеальний фото-контент для інтернет-магазину</h1>
         <p class="intro-text">
-            Якісні фото — це 70% успіху в онлайн-продажах. Клієнт не може торкнутися товару, тому він купує "очима". Цей чек-лист допоможе контент-менеджеру підготувати ідеальні зображення для завантаження на сайт.
+            Покупець в інтернеті не може взяти товар у руки. Єдиний спосіб переконати його купити — показати товар так, щоб у нього не залишилося питань. Цей гайд допоможе контент-менеджеру уникнути типових помилок, які "вбивають" продажі.
         </p>
 
-        <h2>1. Технічні вимоги (Base Standards)</h2>
-        <p style="font-size: 0.9em; color: #666;">Перед тим, як заливати фото в адмінку, перевірте файли на відповідність цим стандартам:</p>
-        
-        <div class="checklist-group">
-            <div class="check-item">
-                <div class="checkbox-fake"></div>
-                <div class="item-content">
-                    <strong>Єдиний розмір (Aspect Ratio)</strong>
-                    <span>Всі фото мають бути однакової пропорції (наприклад, 1:1 для Instagram-товарів або 3:4 для одягу). Не змішуйте квадратні та прямокутні фото в одній галереї.</span>
-                </div>
-            </div>
+        <h2><span class="step-number">1</span> Фон та Оточення</h2>
+        <p>Найпоширеніша помилка новачків — фотографувати товар на "домашньому" фоні (килим, стіл з чашкою кави, вулиця). Для каталогу це неприпустимо. Фон має бути нейтральним, щоб не відволікати увагу від продукту.</p>
 
-            <div class="check-item">
-                <div class="checkbox-fake"></div>
-                <div class="item-content">
-                    <strong>Формат файлу</strong>
-                    <span>Використовуйте <b>.JPG</b> для звичайних фото (білий фон) та <b>.PNG</b>, якщо потрібен прозорий фон. Ідеальний сучасний стандарт — <b>.WebP</b> (швидше вантажиться).</span>
-                </div>
+        <div class="comparison-grid">
+            <div class="compare-card is-bad">
+                <img src="https://placehold.co/600x400/e2e2e2/333333?text=BAD:+Busy+Background\n(Table,+mess,+shadows)" class="compare-img" alt="Bad Example">
+                <div class="compare-label">❌ Неправильно</div>
             </div>
-
-            <div class="check-item">
-                <div class="checkbox-fake"></div>
-                <div class="item-content">
-                    <strong>Оптимізація ваги (File Size)</strong>
-                    <span>Одне фото не має перевищувати <b>200-300 KB</b>. Важкі фото сповільнюють сайт, що вбиває SEO. Використовуйте сервіси стиснення (TinyPNG).</span>
-                </div>
+            <div class="compare-card is-good">
+                <img src="https://placehold.co/600x400/ffffff/16a34a?text=GOOD:+Clean+White+BG\n(Focus+on+Product)" class="compare-img" alt="Good Example">
+                <div class="compare-label">✅ Правильно</div>
             </div>
         </div>
 
-        <div class="alert-box">
-            <strong>⚠️ Порада:</strong> Ніколи не завантажуйте "сирі" фото з камери (вагою 5-10 МБ) прямо на сайт. Це гарантовано уповільнить завантаження сторінки для покупця.
+        <div class="insight-box">
+            <strong>Чому це важливо?</strong> Різнобарвний фон створює "візуальний шум". На білому або світло-сірому фоні товар виглядає дорожче, а акцент робиться саме на деталях продукту.
         </div>
 
-        <h2>2. Візуальна частина (Aesthetics)</h2>
-        
-        <table class="specs-table">
-            <thead>
-                <tr>
-                    <th>Елемент</th>
-                    <th>Вимога</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Фон</strong></td>
-                    <td>Однорідний (білий #FFFFFF або світло-сірий). Ніяких "домашніх килимів" на фоні.</td>
-                </tr>
-                <tr>
-                    <td><strong>Ракурси</strong></td>
-                    <td>Мінімум 3 фото: Загальний план, Деталь/Фактура, Фото в використанні (Lifestyle).</td>
-                </tr>
-                <tr>
-                    <td><strong>Колір</strong></td>
-                    <td>Реалістична передача кольору. Покупець поверне товар, якщо на фото він червоний, а в житті — бордовий.</td>
-                </tr>
-            </tbody>
+        <h2><span class="step-number">2</span> Освітлення та Тіні</h2>
+        <p>Світло вирішує все. Жовте кімнатне світло спотворює кольори (білий стає жовтим, синій — зеленим). Це головна причина повернень товару ("Колір на сайті не відповідає дійсності").</p>
+
+        <div class="comparison-grid">
+            <div class="compare-card is-bad">
+                <img src="https://placehold.co/600x400/333300/ffff00?text=BAD:+Yellow+Light\n(Hard+Shadows)" class="compare-img" alt="Bad Light">
+                <div class="compare-label">❌ Жовте світло / Спалах</div>
+            </div>
+            <div class="compare-card is-good">
+                <img src="https://placehold.co/600x400/f0f0f0/333333?text=GOOD:+Natural+Daylight\n(True+Colors)" class="compare-img" alt="Good Light">
+                <div class="compare-label">✅ Денне / Студійне світло</div>
+            </div>
+        </div>
+
+        <p>Ніколи не використовуйте вбудований спалах телефону. Він робить товар "пласким" і створює різкі, негарні тіні.</p>
+
+        <h2><span class="step-number">3</span> Композиція та Обрізка (Crop)</h2>
+        <p>Всі товари в каталозі мають бути одного розміру і розташовані по центру. Якщо одне фото квадратне, інше — витягнуте, а на третьому товар десь у кутку — сайт виглядає неохайно.</p>
+
+        <div class="comparison-grid">
+            <div class="compare-card is-bad">
+                <img src="https://placehold.co/600x400/cc9999/333333?text=BAD:+Different+Sizes\nBad+Centering" class="compare-img" alt="Bad Composition">
+                <div class="compare-label">❌ Хаос у пропорціях</div>
+            </div>
+            <div class="compare-card is-good">
+                <img src="https://placehold.co/600x400/99cc99/333333?text=GOOD:+Consistent+Grid\nCentered+Product" class="compare-img" alt="Good Composition">
+                <div class="compare-label">✅ Єдиний стандарт</div>
+            </div>
+        </div>
+
+        <div class="insight-box">
+            <strong>Правило відступів:</strong> Залишайте мінімум 10-15% "повітря" (порожнього місця) навколо товару, щоб він не впирався в краї кадру.
+        </div>
+
+        <h2><span class="step-number">4</span> Назва файлу (SEO)</h2>
+        <p>Пошукові системи (Google) не бачать зображення, вони читають назви файлів. Якщо ви завантажуєте фото з назвою <code>IMG_2024.jpg</code>, ви втрачаєте безкоштовний трафік.</p>
+
+        <table style="width:100%; border-collapse: collapse; margin-top: 20px; font-family: monospace; font-size: 0.95em;">
+            <tr style="background: #fef2f2; border-bottom: 1px solid #fff;">
+                <td style="padding: 15px; color: var(--error);">❌ DCIM_0012.JPG</td>
+                <td style="padding: 15px; color: #666;">Нічого не говорить пошуковику</td>
+            </tr>
+            <tr style="background: #fef2f2; border-bottom: 1px solid #fff;">
+                <td style="padding: 15px; color: var(--error);">❌ Screen Shot 2025-01-01.png</td>
+                <td style="padding: 15px; color: #666;">Виглядає непрофесійно</td>
+            </tr>
+            <tr style="background: #f0fdf4; border-bottom: 1px solid #fff;">
+                <td style="padding: 15px; color: var(--success); font-weight: bold;">✅ staleks-kusa4ki-pro-smart.jpg</td>
+                <td style="padding: 15px; color: #666;">Містить назву бренду і товару</td>
+            </tr>
         </table>
 
-        <br>
-
-        <h2>3. SEO та Організація (Naming)</h2>
-        <div class="checklist-group">
-            <div class="check-item">
-                <div class="checkbox-fake"></div>
-                <div class="item-content">
-                    <strong>Правильна назва файлу</strong>
-                    <span>Забудьте про <code>IMG_5839.jpg</code>. Файл має називатися зрозуміло для Google: <code>krem-dlya-oblychya-staleks.jpg</code>.</span>
-                </div>
-            </div>
-
-            <div class="check-item">
-                <div class="checkbox-fake"></div>
-                <div class="item-content">
-                    <strong>Заповнення Alt-тексту</strong>
-                    <span>При завантаженні в адмінку (WordPress/OpenCart) завжди прописуйте атрибут Alt. Це допомагає шукати товар через Google Картинки.</span>
-                </div>
-            </div>
-        </div>
-
-        <div style="margin-top: 50px; border-top: 1px solid var(--border-color); padding-top: 20px; font-size: 0.85em; color: var(--text-light); text-align: center;">
-            Автор: Ольга Воронцова. Підготовлено для демонстрації навичок роботи з контентом.
+        <div class="final-checklist">
+            <h3>Фінальний чек-лист перед публікацією:</h3>
+            <ul>
+                <li>Формат файлу — .JPG або .WEBP (для швидкості).</li>
+                <li>Вага фото — не більше 200-300 КБ.</li>
+                <li>Назва файлу — транслітерацією (nazva-tovaru.jpg).</li>
+                <li>Товар займає 80% кадру, відцентрований.</li>
+                <li>Колір відповідає реальному (перевірено на різних екранах).</li>
+            </ul>
         </div>
 
     </div>
