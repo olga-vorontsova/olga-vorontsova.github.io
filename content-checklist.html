@@ -7,13 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* === СТИЛЬ: PROFESSIONAL & CLEAN (Оновлений) === */
-        
+        /* === СТИЛЬ: PROFESSIONAL & CLEAN === */
         :root {
-            --primary: #0f172a; /* Глибокий темний */
-            --accent: #2563eb; /* Акцентний синій */
-            --success: #16a34a; /* Зелений для "Правильно" */
-            --error: #dc2626;   /* Червоний для "Неправильно" */
+            --primary: #0f172a; 
+            --accent: #2563eb; 
+            --success: #16a34a; 
+            --error: #dc2626;   
             --bg: #f3f4f6;
             --card: #ffffff;
             --border: #e5e7eb;
@@ -43,14 +42,14 @@
             justify-content: space-between;
             align-items: center;
         }
-        .back-btn {
+        .back-link {
             text-decoration: none;
             color: #666;
             font-weight: 600;
             font-size: 0.9em;
             transition: 0.2s;
         }
-        .back-btn:hover { color: var(--accent); }
+        .back-link:hover { color: var(--accent); }
 
         /* Контейнер статті */
         .doc-container {
@@ -63,7 +62,7 @@
         }
 
         h1 { font-size: 2.4em; color: var(--primary); margin-bottom: 15px; letter-spacing: -0.02em; }
-        .subtitle { font-size: 1.2em; color: #6b7280; margin-bottom: 50px; font-weight: 300; }
+        .intro-text { font-size: 1.1em; color: #4b5563; margin-bottom: 50px; }
         
         h2 { 
             font-size: 1.6em; 
@@ -90,9 +89,7 @@
             font-weight: bold;
         }
 
-        p { margin-bottom: 20px; color: #4b5563; }
-
-        /* === БЛОКИ ПОРІВНЯННЯ (NEW!) === */
+        /* === БЛОКИ ПОРІВНЯННЯ === */
         .comparison-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -103,7 +100,9 @@
         .compare-card {
             border-radius: 8px;
             overflow: hidden;
-            border: 1px solid var(--border);
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
         }
 
         .compare-img {
@@ -130,15 +129,27 @@
         .is-good { border-color: var(--success); }
         .is-good .compare-label { background: #f0fdf4; color: var(--success); border-top: 1px solid var(--success); }
 
-        /* Текстові пояснення */
+        /* Текстові пояснення (Інсайт) */
         .insight-box {
             background: #f8fafc;
             border-left: 4px solid var(--accent);
             padding: 20px;
-            border-radius: 0 8px 8px 0;
             font-size: 0.95em;
+            color: #334155;
             margin: 20px 0;
         }
+
+        /* Таблиця для файлів */
+        .file-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: monospace;
+            font-size: 0.95em;
+            margin-top: 20px;
+        }
+        .file-table td { padding: 15px; border-bottom: 1px solid #eee; }
+        .bg-bad { background-color: #fef2f2; color: var(--error); }
+        .bg-good { background-color: #f0fdf4; color: var(--success); font-weight: bold; }
 
         /* Чек-ліст в кінці */
         .final-checklist {
@@ -148,17 +159,11 @@
             border-radius: 12px;
             margin-top: 60px;
         }
-        .final-checklist h3 { margin-top: 0; color: white; }
+        .final-checklist h3 { margin-top: 0; color: white; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 15px; }
         .final-checklist ul { list-style: none; padding: 0; }
-        .final-checklist li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .final-checklist li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
         .final-checklist li::before { content: '✔'; color: var(--success); font-weight: bold; }
 
-        /* Адаптивність */
         @media (max-width: 700px) {
             .doc-container { padding: 30px 20px; }
             .comparison-grid { grid-template-columns: 1fr; }
@@ -169,95 +174,93 @@
 
     <header>
         <div class="header-inner">
-            <a href="index.html" class="back-btn">← Повернутися до портфоліо</a>
-            <span style="font-size: 0.85em; color: #999; font-weight: 600;">E-COMMERCE GUIDE</span>
+            <a href="index.html" class="back-link">← Повернутися до портфоліо</a>
+            <span style="font-size: 0.85em; color: #999; font-weight: 600;">GUIDE FOR E-COMMERCE</span>
         </div>
     </header>
 
     <div class="doc-container">
         <h1>Як підготувати ідеальний фото-контент для інтернет-магазину</h1>
         <p class="intro-text">
-            Покупець в інтернеті не може взяти товар у руки. Єдиний спосіб переконати його купити — показати товар так, щоб у нього не залишилося питань. Цей гайд допоможе контент-менеджеру уникнути типових помилок, які "вбивають" продажі.
+            Покупець в інтернеті не може взяти товар у руки. Єдиний спосіб переконати його купити — показати товар так, щоб у нього не залишилося питань. Цей гайд допоможе уникнути помилок, які "вбивають" продажі.
         </p>
 
         <h2><span class="step-number">1</span> Фон та Оточення</h2>
-        <p>Найпоширеніша помилка новачків — фотографувати товар на "домашньому" фоні (килим, стіл з чашкою кави, вулиця). Для каталогу це неприпустимо. Фон має бути нейтральним, щоб не відволікати увагу від продукту.</p>
+        <p>Найпоширеніша помилка — фотографувати товар на "робочому столі" серед інших речей. Для каталогу це неприпустимо. Фон має бути нейтральним.</p>
 
         <div class="comparison-grid">
             <div class="compare-card is-bad">
-                <img src="https://placehold.co/600x400/e2e2e2/333333?text=BAD:+Busy+Background\n(Table,+mess,+shadows)" class="compare-img" alt="Bad Example">
-                <div class="compare-label">❌ Неправильно</div>
+                <img src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=600&q=80" class="compare-img" alt="Bad Messy Desk">
+                <div class="compare-label">❌ Неправильно: Візуальний шум</div>
             </div>
             <div class="compare-card is-good">
-                <img src="https://placehold.co/600x400/ffffff/16a34a?text=GOOD:+Clean+White+BG\n(Focus+on+Product)" class="compare-img" alt="Good Example">
-                <div class="compare-label">✅ Правильно</div>
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" class="compare-img" alt="Good Product Shot">
+                <div class="compare-label">✅ Правильно: Чистий фон</div>
             </div>
         </div>
 
         <div class="insight-box">
-            <strong>Чому це важливо?</strong> Різнобарвний фон створює "візуальний шум". На білому або світло-сірому фоні товар виглядає дорожче, а акцент робиться саме на деталях продукту.
+            <strong>Чому це важливо?</strong> Різнобарвний фон відволікає увагу. На білому або світло-сірому фоні товар виглядає дорожче, а акцент робиться саме на деталях продукту.
         </div>
 
         <h2><span class="step-number">2</span> Освітлення та Тіні</h2>
-        <p>Світло вирішує все. Жовте кімнатне світло спотворює кольори (білий стає жовтим, синій — зеленим). Це головна причина повернень товару ("Колір на сайті не відповідає дійсності").</p>
+        <p>Світло вирішує все. Жовте кімнатне світло спотворює кольори (білий стає жовтим). Це головна причина повернень товару ("Колір не відповідає дійсності").</p>
 
         <div class="comparison-grid">
             <div class="compare-card is-bad">
-                <img src="https://placehold.co/600x400/333300/ffff00?text=BAD:+Yellow+Light\n(Hard+Shadows)" class="compare-img" alt="Bad Light">
-                <div class="compare-label">❌ Жовте світло / Спалах</div>
+                <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&w=600&q=80" class="compare-img" alt="Bad Light">
+                <div class="compare-label">❌ Штучне / Кольорове світло</div>
             </div>
             <div class="compare-card is-good">
-                <img src="https://placehold.co/600x400/f0f0f0/333333?text=GOOD:+Natural+Daylight\n(True+Colors)" class="compare-img" alt="Good Light">
-                <div class="compare-label">✅ Денне / Студійне світло</div>
+                <img src="https://images.unsplash.com/photo-1595348020949-87cdfbb44174?auto=format&fit=crop&w=600&q=80" class="compare-img" alt="Good Light">
+                <div class="compare-label">✅ Природнє денне світло</div>
             </div>
         </div>
 
-        <p>Ніколи не використовуйте вбудований спалах телефону. Він робить товар "пласким" і створює різкі, негарні тіні.</p>
-
-        <h2><span class="step-number">3</span> Композиція та Обрізка (Crop)</h2>
-        <p>Всі товари в каталозі мають бути одного розміру і розташовані по центру. Якщо одне фото квадратне, інше — витягнуте, а на третьому товар десь у кутку — сайт виглядає неохайно.</p>
+        <h2><span class="step-number">3</span> Композиція (Crop)</h2>
+        <p>Всі товари в каталозі мають бути одного розміру і розташовані по центру. Якщо один товар сфотографовано згори, а інший — збоку, категорія виглядає неохайно.</p>
 
         <div class="comparison-grid">
             <div class="compare-card is-bad">
-                <img src="https://placehold.co/600x400/cc9999/333333?text=BAD:+Different+Sizes\nBad+Centering" class="compare-img" alt="Bad Composition">
-                <div class="compare-label">❌ Хаос у пропорціях</div>
+                <img src="https://images.unsplash.com/photo-1531297461136-82lw8z9a?auto=format&fit=crop&w=600&q=80" class="compare-img" alt="Bad Composition">
+                <div class="compare-label">❌ Обрізано / Кривий ракурс</div>
             </div>
             <div class="compare-card is-good">
-                <img src="https://placehold.co/600x400/99cc99/333333?text=GOOD:+Consistent+Grid\nCentered+Product" class="compare-img" alt="Good Composition">
-                <div class="compare-label">✅ Єдиний стандарт</div>
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" class="compare-img" alt="Good Composition">
+                <div class="compare-label">✅ Товар по центру</div>
             </div>
         </div>
 
         <div class="insight-box">
-            <strong>Правило відступів:</strong> Залишайте мінімум 10-15% "повітря" (порожнього місця) навколо товару, щоб він не впирався в краї кадру.
+            <strong>Правило:</strong> Залишайте мінімум 10-15% "повітря" (порожнього місця) навколо товару, щоб він не впирався в краї кадру.
         </div>
 
         <h2><span class="step-number">4</span> Назва файлу (SEO)</h2>
         <p>Пошукові системи (Google) не бачать зображення, вони читають назви файлів. Якщо ви завантажуєте фото з назвою <code>IMG_2024.jpg</code>, ви втрачаєте безкоштовний трафік.</p>
 
-        <table style="width:100%; border-collapse: collapse; margin-top: 20px; font-family: monospace; font-size: 0.95em;">
-            <tr style="background: #fef2f2; border-bottom: 1px solid #fff;">
-                <td style="padding: 15px; color: var(--error);">❌ DCIM_0012.JPG</td>
-                <td style="padding: 15px; color: #666;">Нічого не говорить пошуковику</td>
+        <table class="file-table">
+            <tr class="bg-bad">
+                <td>❌ DCIM_0012.JPG</td>
+                <td>Нічого не говорить пошуковику</td>
             </tr>
-            <tr style="background: #fef2f2; border-bottom: 1px solid #fff;">
-                <td style="padding: 15px; color: var(--error);">❌ Screen Shot 2025-01-01.png</td>
-                <td style="padding: 15px; color: #666;">Виглядає непрофесійно</td>
+            <tr class="bg-bad">
+                <td>❌ Screen Shot 2025-01-01.png</td>
+                <td>Виглядає непрофесійно</td>
             </tr>
-            <tr style="background: #f0fdf4; border-bottom: 1px solid #fff;">
-                <td style="padding: 15px; color: var(--success); font-weight: bold;">✅ staleks-kusa4ki-pro-smart.jpg</td>
-                <td style="padding: 15px; color: #666;">Містить назву бренду і товару</td>
+            <tr class="bg-good">
+                <td>✅ staleks-pro-smart-10.jpg</td>
+                <td>Містить бренд, серію та модель</td>
             </tr>
         </table>
 
         <div class="final-checklist">
-            <h3>Фінальний чек-лист перед публікацією:</h3>
+            <h3>Фінальний чек перед завантаженням:</h3>
             <ul>
                 <li>Формат файлу — .JPG або .WEBP (для швидкості).</li>
-                <li>Вага фото — не більше 200-300 КБ.</li>
-                <li>Назва файлу — транслітерацією (nazva-tovaru.jpg).</li>
-                <li>Товар займає 80% кадру, відцентрований.</li>
-                <li>Колір відповідає реальному (перевірено на різних екранах).</li>
+                <li>Вага фото — не більше 200-300 КБ (стиснуто через TinyPNG).</li>
+                <li>Назва файлу — транслітерацією через дефіс.</li>
+                <li>Фон — ідеально білий (#FFFFFF) або світло-сірий.</li>
+                <li>Колір товару відповідає реальному.</li>
             </ul>
         </div>
 
