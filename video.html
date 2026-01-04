@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Portfolio | Olga Vorontsova</title>
+    <style>
+        /* === ЗАГАЛЬНІ СТИЛІ === */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: radial-gradient(circle at top right, #1a1a2e, #16213e, #0f0f0f);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* Додаємо легку текстуру "шуму" на фон для кіноефекту */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* === ХЕДЕР (ІМ'Я) === */
+        header {
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 0;
+            background: linear-gradient(90deg, #fff, #bb86fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #a0a0a0;
+            margin-top: 10px;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* === СІТКА ВІДЕО === */
+        .video-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .video-card {
+            flex: 0 1 320px; /* Ширина картки */
+            background: rgba(255, 255, 255, 0.05); /* Прозорий фон */
+            backdrop-filter: blur(10px); /* Розмиття фону */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            border-color: #bb86fc;
+            box-shadow: 0 20px 40px rgba(187, 134, 252, 0.2);
+        }
+
+        .video-player {
+            width: 100%;
+            height: 500px; /* Висота для Reels */
+            object-fit: cover;
+            border-radius: 15px;
+            background-color: #000;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .card-info h3 {
+            margin: 10px 0 5px;
+            font-size: 1.1em;
+            color: #fff;
+        }
+
+        .card-info p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #ccc;
+            line-height: 1.4;
+        }
+
+        /* === КНОПКА "НАЗАД" === */
+        .back-btn {
+            display: inline-block;
+            margin-top: 60px;
+            padding: 12px 30px;
+            border: 1px solid #bb86fc;
+            color: #bb86fc;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #bb86fc;
+            color: #000;
+            box-shadow: 0 0 20px rgba(187, 134, 252, 0.6);
+        }
+
+        /* Анімації */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Адаптивність */
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            .video-card { flex: 1 1 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <h1>Olga Vorontsova</h1>
+            <div class="subtitle">Content Manager & Video Editor</div>
+            <div style="margin-top: 15px; width: 60px; height: 3px; background: #bb86fc; margin-left: auto; margin-right: auto;"></div>
+        </header>
+
+        <div class="video-gallery">
+
+            <div class="video-card">
+                <video class="video-player" controls playsinline poster="poster1.jpg">
+                    <source src="beauty-aesthetic.mov" type="video/mp4">
+                    <source src="beauty-aesthetic.mp4" type="video/mp4">
+                </video>
+                <div class="card-info">
+                    <h3>🌿 Aesthetic / UGC</h3>
+                    <p>Предметна зйомка, робота з текстурами, ASMR-стиль.</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <video class="video-player" controls playsinline>
+                    <source src="lifestyle-vlog.mov" type="video/mp4">
+                    <source src="lifestyle-vlog.mp4" type="video/mp4">
+                </video>
+                <div class="card-info">
+                    <h3>📅 Lifestyle Vlog</h3>
+                    <p>Робота з саунддизайном, трендовий формат "Day in life"</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <video class="video-player" controls playsinline>
+                    <source src="expert-review.mov" type="video/mp4">
+                    <source src="expert-review.mp4" type="video/mp4">
+                </video>
+                <div class="card-info">
+                    <h3>🗣️ Expert Review</h3>
+                    <p>Talking Head, субтитри</p>
+                </div>
+            </div>
+
+            <div class="video-card" style="border-color: #03dac6;">
+                <video class="video-player" controls playsinline>
+                    <source src="motion-tracking.mp4" type="video/mp4">
+                </video>
+                <div class="card-info">
+                    <h3 style="color: #03dac6;">🚀 VFX & Motion Tracking</h3>
+                    <p>Прив'язка об'єктів (Tracking), AR-ефекти, креативний сторітелінг</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <video class="video-player" controls playsinline>
+                    <source src="sales-promo.mp4" type="video/mp4">
+                </video>
+                <div class="card-info">
+                    <h3>🛍️ Sales Promo</h3>
+                    <p>Рекламний ролик, анімація товарів, візуалізація знижок.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <a href="index.html" class="back-btn">← Повернутися до Резюме</a>
+
+    </div>
+
+</body>
+</html>
